@@ -1,12 +1,12 @@
-const productos = localStorage.getItem('productos');
-console.log(productos);
+const productos = JSON.parse(localStorage.getItem('productos'));
 window.onload = function() {
   productos.forEach(element => {
+    console.log(element.imagen);
     if(element.categoria === 'Control de peso') {
       let div = document.createElement('div');
       div.className = 'card';
       div.innerHTML = `
-      <img src="img/${element.imagen}" class="card-img-top" alt="${element.nombre}">
+      <img src="${element.imagen}" alt="${element.nombre}" width=100px height=100px>
       <div class="card-body">
         <h5 class="card-title">${element.nombre}</h5>
         <p class="card-text">Precio: ${element.precio}</p>

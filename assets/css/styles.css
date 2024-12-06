@@ -24,3 +24,7 @@ body {
 footer {
     margin-top: 20px;
 }
+
+.cards{
+    width: 50%;
+}

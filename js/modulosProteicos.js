@@ -4,10 +4,11 @@ console.log(typeof(productos));
 window.onload = function() {
   productos.forEach(element => {
     if(element.categoria === 'Modulos proteicos') {
+      console.log(element.imagen);
       let div = document.createElement('div');
       div.className = 'card';
       div.innerHTML = `
-      <img src="img/${element.imagen}" class="card-img-top" alt="${element.nombre}">
+      <img src="${element.imagen}" alt="${element.nombre}" width=100px height=100px>
       <div class="card-body">
         <h5 class="card-title">${element.nombre}</h5>
         <p class="card-text">Precio: ${element.precio}</p>

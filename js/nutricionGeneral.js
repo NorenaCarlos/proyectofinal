@@ -1,6 +1,5 @@
+let carrito = JSON.parse(localStorage.getItem('carrito'));
 const productos = JSON.parse(localStorage.getItem('productos'));
-console.log(productos);
-console.log(typeof(productos));
 window.onload = function() {
   productos.forEach(element => {
     if(element.categoria === 'Nutrición general') {
@@ -9,7 +8,6 @@ window.onload = function() {
       div.classList.add('product-card');
       div.style = 'width: 18rem; margin: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;';
       const img = document.createElement('img');
-      console.log(element.imagen);
       img.setAttribute('src',element.imagen);
       img.style.marginTop='20px';
       img.style.borderRadius='10px';
@@ -34,6 +32,7 @@ window.onload = function() {
       quantity.setAttribute('min',1);
       quantity.setAttribute('max',element.stock);
       quantity.setAttribute('value',1);
+      quantity.setAttribute('id', 'quantity-' + element.id);
       div2.appendChild(name);
       div2.appendChild(paragraph);
       div2.appendChild(paragraph2);
@@ -48,7 +47,9 @@ window.onload = function() {
       button.setAttribute('class','btn btn-primary')
       button.style.width='60%';
       button.style.marginBottom='10px';
-      button.addEventListener('click',agregarCarrito(this.id))
+      button.addEventListener('click',function(){
+        agregarCarrito(this.id);
+      });
       div.appendChild(button);
       let contenedor = document.getElementById('productos');
       contenedor.style = 'display: flex; flex-wrap: wrap; justify-content: center;';
@@ -56,7 +57,6 @@ window.onload = function() {
     } 
   });
 }
-
 function agregarCarrito(productoId){
   const quantityInput = document.getElementById('quantity-' + productoId);
   if (quantityInput) {
@@ -79,11 +79,8 @@ function agregarCarrito(productoId){
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
     console.log(carrito); // Para verificar que el producto se ha agregado correctamente
+    alert('Producto agregado al carrito');
   } else {
     console.error('No se encontró el campo de cantidad para el producto con ID:', productoId);
   }
-}
-
-function presentar(producto){
-
 }

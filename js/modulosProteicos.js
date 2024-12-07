@@ -79,6 +79,7 @@ function agregarCarrito(productoId){
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
     console.log(carrito); // Para verificar que el producto se ha agregado correctamente
+    alert('Producto agregado al carrito');
   } else {
     console.error('No se encontró el campo de cantidad para el producto con ID:', productoId);
   }

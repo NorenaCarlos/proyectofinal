@@ -50,6 +50,5 @@ let productos = [
 window.onload = function() {
   // Guardar datos en localStorage
   localStorage.setItem('productos', JSON.stringify(productos));
-  console.log(localStorage.getItem('productos'));
 } 
 

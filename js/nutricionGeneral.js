@@ -1,7 +1,9 @@
 const productos = JSON.parse(localStorage.getItem('productos'));
+console.log(productos);
+console.log(typeof(productos));
 window.onload = function() {
   productos.forEach(element => {
-    if(element.categoria === 'Control de peso') {
+    if(element.categoria === 'Nutrición general') {
       let div = document.createElement('div');
       div.classList.add('card');
       div.classList.add('product-card');
@@ -80,4 +82,8 @@ function agregarCarrito(productoId){
   } else {
     console.error('No se encontró el campo de cantidad para el producto con ID:', productoId);
   }
+}
+
+function presentar(producto){
+
 }
